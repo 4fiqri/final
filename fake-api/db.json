@@ -1,0 +1,123 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "Fiqri",
+      "password": "rahasia123",
+      "role": "admin"
+    },
+    {
+      "id": 2,
+      "username": "wahid",
+      "password": "wahid",
+      "role": "user"
+    },
+    {
+      "username": "4fiqri@gmail.com",
+      "role": "user",
+      "id": 3
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "nama": "Kaos polos Hitam",
+      "harga": 20000,
+      "category": "polos",
+      "discount": 10,
+      "deskripsi": "Kaos Terbalik",
+      "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2COktTC7epeb_Qs96UzutI9cLrmtZjXO5FLG09rxmKpSjccEh",
+      "idCategory": 2
+    },
+    {
+      "nama": "Kaos Polo",
+      "harga": 20000,
+      "discount": 10,
+      "category": "polo",
+      "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTy2i_CGUYEIGjJf2bKlAmO3cQiIaX5145-8sSM6sgcTmjxoL61",
+      "deskripsi": "Kaos PoloTerbalik",
+      "idCategory": 2,
+      "id": 2
+    },
+    {
+      "id": 3,
+      "nama": "Kaos Lengan Panjang",
+      "harga": 20000,
+      "category": "lengan panjang",
+      "discount": 0,
+      "deskripsi": "Kaos Lengan panjang",
+      "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQL5PWvcyL-lmvYxEnvKcyv_ZcU3R0TyJfsFRFHOlZE5NNLI6uR",
+      "idCategory": 2
+    },
+    {
+      "id": 4,
+      "nama": "Kaos Bola",
+      "harga": 20000,
+      "category": "bola",
+      "discount": 10,
+      "deskripsi": "Kaos Bola Terbalik",
+      "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8NbgkYvDq3sF9vBSCoJJ586Mdn1FOZICPtnTqSDdx2ZcHBOLkBQ",
+      "idCategory": 2
+    },
+    {
+      "nama": "Kaos Malu telat Shalat",
+      "harga": 50000,
+      "discount": "5",
+      "category": "Sablon",
+      "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSu8G_1l5RWMcmiDD7TOqmw-G32djy8dOCkCqAL4IQ3Vdn1HPVj",
+      "idCategory": 2,
+      "deskripsi": "Kaos pengingat",
+      "id": 5
+    },
+    {
+      "id": 6,
+      "nama": "Kaos pernah gendut",
+      "harga": 20000,
+      "category": "diet",
+      "discount": 20,
+      "deskripsi": "Kaos Bad Habit",
+      "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkrv4O2ZNzLESEXGTR3en4GjZtet5e-8zpUZCwmy-ak-b3f53FjQ",
+      "idCategory": 2
+    },
+    {
+      "nama": "Kaos Lengan Panjang Gradasi",
+      "harga": "25000",
+      "category": "lengan panjang",
+      "discount": "10",
+      "deskripsi": "Kaos lengan panjang Gradasi",
+      "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQI3VHVP9jjjYiWqlcINRQFjEjI0w8grdzJwl05CewyeKriE7xKg",
+      "idCategory": 2,
+      "id": 7
+    },
+    {
+      "nama": "Kaos Full Sablon Eagle",
+      "harga": "30000",
+      "category": "full sablon",
+      "discount": "10",
+      "deskripsi": "kaos full sablon Eagle",
+      "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1yxfgo4nSdf3Pam0XaLaJUverNDAo-zdqpJI7PD_NE-c3l0uJiQ",
+      "idCategory": 2,
+      "id": 8
+    }
+  ],
+  "category": [
+    {
+      "id": 1,
+      "category": "jaket"
+    },
+    {
+      "id": 2,
+      "category": "kaos"
+    },
+    {
+      "id": 3,
+      "category": "celana"
+    },
+    {
+      "id": 4,
+      "category": "kemeja"
+    }
+  ],
+  "cart": [],
+  "history": []
+}
