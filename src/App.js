@@ -10,6 +10,9 @@ import ProductDetail from './components/productDetail'
 import ScrollToTop from './components/scrollToTop'
 import Cart from './components/cart'
 import History from './components/historyTransaksi'
+import ManageTransaksi from './components/manageTransaksi'
+import Wishlist from './components/wishlist'
+import EditProfile from './components/editProfile'
 import { Route ,withRouter, Switch } from 'react-router-dom' 
 import {connect} from 'react-redux'
 import cookie from 'universal-cookie'
@@ -48,8 +51,11 @@ class App extends Component {
                 <Route path='/product' component={Product} exact/>
                 <Route path='/cart' component={Cart} exact/>
                 <Route path='/manage' component={ManageProduct} exact/>
+                <Route path='/manageTransaksi' component={ManageTransaksi} exact/>
                 <Route path='/history' component={History} exact/>
-                <Route path='/product-detail/:terserah' component={ProductDetail} exact/>
+                <Route path='/editProfile' component={EditProfile} exact/>
+                <Route path='/wishlist' component={Wishlist} exact/>
+                <Route path='/product-detail/:idProduct' component={ProductDetail} exact/>
                 <Route path='*' component={PageNotFound} exact/>
             </Switch>
           </ScrollToTop>

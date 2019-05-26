@@ -8,12 +8,12 @@ import {
 
 const items = [
   {
-    src: require('./../support/img/caro1.jpg'),
+    src: require('../../support/img/caro1.jpg'),
     altText: 'MaretMantap',
     caption: 'MaretMantap'
   },
   {
-    src: require('./../support/img/caro2.jpg'),
+    src: require('../../support/img/caro2.jpg'),
     altText: 'MaretMantap',
     caption: 'MaretMantap'
   }

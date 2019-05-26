@@ -1,30 +1,15 @@
-import { withStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableHead from '@material-ui/core/TableHead'
-import TableCell from '@material-ui/core/TableCell';
-import TableFooter from '@material-ui/core/TableFooter';
-import TablePagination from '@material-ui/core/TablePagination';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
-import IconButton from '@material-ui/core/IconButton';
-import FirstPageIcon from '@material-ui/icons/FirstPage';
-import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
-import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
-import LastPageIcon from '@material-ui/icons/LastPage';
+
 import { connect } from 'react-redux'
 import {Link} from 'react-router-dom'
 import PageNotFound from './pageNotFound'
-
-
-
+import Popup from 'reactjs-popup'
 
 
 import React from "react"
 import axios from 'axios'
 // import {Link} from 'react-router-dom';
 import { urlApi } from "./../support/urlApi"
-import { Button , Icon, Divider, Header, Image, Segment } from 'semantic-ui-react'
+import { Button , Icon, Header,Segment } from 'semantic-ui-react'
 import swal from 'sweetalert'
 import { cartCount, resetCount} from './../1.actions'
 
@@ -49,14 +34,16 @@ class Cart extends React.Component{
     
     min = (param) =>{
         var newData = {
-            username : param.username,
             userId : param.userId,
-            namaProduk : param.namaProduk,
-            harga : param.harga,
-            qty : param.qty-1,
-            img : param.img,
+            username : param.username,
             id : param.id,
-            discount : param.discount
+            idProduct : param.idProduct,
+            img : param.img,
+            namaProduk : param.namaProduk,
+            size :param.size,
+            harga : param.harga,
+            discount : param.discount,
+            qty : param.qty-1,
         }
         
         if(param.qty >1){
@@ -68,26 +55,30 @@ class Cart extends React.Component{
 
     plus = (param) => {
         var newData = {
-            username : param.username,
             userId : param.userId,
-            namaProduk : param.namaProduk,
-            harga : param.harga,
-            qty : param.qty+1,
-            img : param.img,
+            username : param.username,
             id : param.id,
-            discount : param.discount
+            idProduct : param.idProduct,
+            img : param.img,
+            namaProduk : param.namaProduk,
+            size :param.size,
+            harga : param.harga,
+            discount : param.discount,
+            qty : param.qty+1,
         }
 
         axios.put(urlApi + '/cart/' + newData.id , newData)
         .then((res) => {this.getDataCart()})
         .catch((err) => {console.log(err)})
     }
+
    
     onBtnRemoveCart(id){
         axios.delete(urlApi +'/cart/'+ id)
         .then((res) => {
             this.getDataCart()
             this.props.cartCount(this.props.username)
+            this.handleConfirm()
           })
           .catch((err) => console.log(err))
     }
@@ -98,55 +89,71 @@ class Cart extends React.Component{
                 <React.Fragment>
                 <div className="row my-1 text-capitalize text-center">
                     <div className="col-10 mx-auto col-lg-2">
-                    <img
-                        src={val.img}
-                        style={{ width: "5rem", heigth: "5rem" }}
-                        className="img-fluid"
-                        alt=""
-                    />
+                    <Link to={'/product-detail/' + val.idProduct}>
+                        <img
+                            src={val.img}
+                            style={{ width: "5rem", heigth: "5rem" }}
+                            className="img-fluid"
+                            alt=""
+                        />
+                    </Link>
                     </div>
-                    <div className="col-10 mx-auto col-lg-2 ">
+                    <div className="col-10 mx-auto col-lg-3 ">
                     <span className="d-lg-none">product :</span> {val.namaProduk}
                     </div>
-                    <div className="col-10 mx-auto col-lg-2 ">
-                    <strong>
-                        <span className="d-lg-none">price :</span>Rp. {val.harga-(val.harga*val.discount/100)}
-                    </strong>
+                    <div className="col-10 mx-auto col-lg-1 ">
+                    <span className="d-lg-none">size :</span> {val.size}
+                    </div>
+                    <div className="col-10 mx-auto col-lg-1 ">
+                        <strong>
+                            <span className="d-lg-none">price :</span>{formatMoney(val.harga-(val.harga*val.discount/100))}
+                        </strong>
                     </div>
                     <div className="col-10 mx-auto col-lg-2 my-2 my-lg-0 ">
-                    <div className="d-flex justify-content-center">
-                        <div>
-                        {/* <input disabled className='btn border-secondary col-md-2' value='Add to WishList' /> */}
-                        Qty :
-                        <span
-                            className="btn btn-black border-danger mx-1"
-                            onClick={()=>this.min(val)}
-                        >
-                            -
-                        </span>
-                        <span className="btn btn-black border-dark mx-1">{val.qty}</span>
-                        <span
-                            className="btn btn-black border-primary mx-1"
-                            onClick={() => {this.plus(val)}}
-                        >
-                            +
-                        </span>
+                        <div className="d-flex justify-content-center">
+                            <div>
+                            {/* <input disabled className='btn border-secondary col-md-2' value='Add to WishList' /> */}
+                            Qty :
+                                <span
+                                    className="btn btn-black border-danger mx-1"
+                                    onClick={()=>this.min(val)}
+                                >
+                                    -
+                                </span>
+                                <span className="btn btn-black border-dark mx-1">{val.qty}</span>
+                                <span
+                                    className="btn btn-black border-primary mx-1"
+                                    onClick={() => {this.plus(val)}}
+                                >
+                                    +
+                                </span>
+                            </div>
                         </div>
                     </div>
-                    </div>
-                    <div className="col-10 mx-auto col-lg-2 ">
-                    <div className=" cart-icon">
-                            <Button animated color='red' onClick={() => {this.onBtnRemoveCart(val.id)}}>
+                    <div className="col-10 mx-auto col-lg-1 ">
+                        <div>
+                            <Popup trigger={<Button animated color='red'>
                                 <Button.Content visible>Remove</Button.Content>
-                                <Button.Content hidden>
-                                <Icon name='delete'/>
-                                </Button.Content>
-                            </Button>
+                                <Button.Content hidden><Icon name='delete'/></Button.Content>
+                                </Button>} modal  closeOnDocumentClick >
+                                {close => (
+                                    <React.Fragment>
+                                    <div className="header" style={{marginTop:'10px'}}> Yakin akan Menghapus {val.namaProduk} size {val.size} ? </div>
+                                    <div className="content">
+                                        <button style={{marginRight:'10px', marginTop:'20px', marginBottom:'10px'}} className="btn btn-light btn-outline-dark"
+                                            onClick={() => { this.onBtnRemoveCart(val.id) 
+                                            close() }} > Yes </button>
+                                        <button style={{marginLeft:'10px', marginTop:'20px', marginBottom:'10px'}} className="btn btn-light btn-outline-dark"
+                                            onClick={() => { console.log('modal closed ') 
+                                            close() }}> Cancel </button>
+                                    </div>
+                                    </React.Fragment>
+                                )}
+                            </Popup>
+                        </div>
                     </div>
-                    </div>
-
                     <div className="col-10 mx-auto col-lg-2 ">
-                    <strong>item total : Rp. {(val.harga-(val.harga*val.discount/100))*val.qty} </strong>
+                        <strong>{formatMoney((val.harga-(val.harga*val.discount/100))*val.qty)} </strong>
                     </div>
                 </div>
                 </React.Fragment>
@@ -170,15 +177,6 @@ class Cart extends React.Component{
                   </Segment>
                 </div>
                 </center>
-                
-                
-            //   <div className="container mt-5">
-            //     <div className="row">
-            //       <div className="col-10 mx-auto text-center text-title text-capitalize">
-            //         <h1>Your cart is currently empty !!!</h1>
-            //       </div>
-            //     </div>
-            //   </div>
             );
     }
 
@@ -208,15 +206,46 @@ class Cart extends React.Component{
         return(
             <div className="container-fluid text-right d-none d-lg-block">
                 <div className="row">
-                    <div className="col-10 mt-2 ml-sm-5 ml-md-auto col-sm-8 text-capitalize text-right">
-                        <input className="btn btn-outline-danger text-uppercase mb-3 px-5" type="button"
-                            onClick={this.clearAllCart} value ='clear All cart'
-                        />
+                    <div className="col-10 mt-2 ml-sm-5 ml-md-auto col-sm-8 text-capitalize text-right">                    
+                        <Popup trigger={<input className="btn btn-outline-danger text-uppercase mb-3 px-5" type="button"
+                            value ='clear All cart'/>} modal  closeOnDocumentClick >
+                            {close => (
+                                <React.Fragment>
+                                <div className="header" style={{marginTop:'10px', textAlign:'center'}}> Yakin akan menghapus semua Cart ? </div>
+                                <div className="content" style={{textAlign:'center'}}>
+                                    <button style={{marginRight:'10px', marginTop:'20px', marginBottom:'10px', textAlign:'center'}} className="btn btn-light btn-outline-dark"
+                                        onClick={() => { this.clearAllCart() 
+                                        close() }} > Yes </button>
+                                    <button style={{marginLeft:'10px', marginTop:'20px', marginBottom:'10px', textAlign:'center'}} className="btn btn-light btn-outline-dark"
+                                        onClick={() => { console.log('modal closed ') 
+                                        close() }}> Cancel </button>
+                                </div>
+                                </React.Fragment>
+                            )}
+                        </Popup>           
                         <h5>
-                        <span className="text-title"> Total Pembayaran : Rp.{this.totalBayar()}</span>{" "}
-                        <span></span>
+                            <span className="text-title"> Total Pembayaran : Rp.{this.totalBayar()}</span>{" "}
+                            <span></span>
                         </h5>
                         <div className=" cart-icon">
+                            <Popup trigger={ <Button animated color='green'>
+                                <Button.Content visible>Bayar</Button.Content>
+                                <Button.Content hidden><Icon name='money bill alternate outline'/></Button.Content>
+                                </Button>} modal  closeOnDocumentClick >
+                                {close => (
+                                    <React.Fragment>
+                                    <div className="header" style={{marginTop:'10px', textAlign:'center'}}> Lanjutkan Pembayaran ? </div>
+                                    <div className="content" style={{textAlign:'center'}}>
+                                        <button style={{marginRight:'10px', marginTop:'20px', marginBottom:'10px', textAlign:'center'}} className="btn btn-light btn-outline-dark"
+                                            onClick={() => { this.onBtnCheckout() 
+                                            close() }} > Yes </button>
+                                        <button style={{marginLeft:'10px', marginTop:'20px', marginBottom:'10px', textAlign:'center'}} className="btn btn-light btn-outline-dark"
+                                            onClick={() => { console.log('modal closed ') 
+                                            close() }}> Cancel </button>
+                                    </div>
+                                    </React.Fragment>
+                                )}
+                            </Popup>
                             <Button animated color='green' onClick={this.onBtnCheckout}>
                                 <Button.Content visible>CheckOut</Button.Content>
                                 <Button.Content hidden>
@@ -233,7 +262,12 @@ class Cart extends React.Component{
 
     onBtnCheckout = () => {
         var date = new Date()
-        var today = date.getDate() + '-' + (date.getMonth() + 1) + '-' + date.getFullYear()
+        var year = date.getFullYear();
+        var month = date.getMonth() + 1;
+            if(month <= 9) month = '0'+month;
+        var day= date.getDate();
+            if(day <= 9) day = '0'+day;
+        var today = day + month + year
         var totalPrice = this.totalBayar()
         var newData = {
             idUser : this.props.userId,
@@ -242,28 +276,39 @@ class Cart extends React.Component{
             totalPrice : totalPrice
         }
         axios.post(urlApi +'/history', newData)
-        .then((res) => console.log(res))
+        .then((res) =>{
+            console.log(res)
+            this.props.cartCount(this.props.username)
+            swal('Segera Lakukan Pembayaran' , 'Rekening brutalists ada pada tombol Bayar dikolom ACT di Menu => History Transaksi' , 'success')
+
+        })
         .catch((err) => console.log(err))
         
         for(var i=0;i<this.state.cart.length; i++){
             axios.delete(urlApi +'/cart/' + this.state.cart[i].id)
             .then((res) => {
                 this.setState({cart :[]})
+                this.props.cartCount(this.props.username)
+
             })
             .catch((err) => console.log(err))
         }
        
     }
+
+   
           
     render(){ 
-        if(this.state.cart.length == 0 && this.props.userId > 0){
+        if(this.state.cart.length === 0 && this.props.userId > 0){
             return(
-                this.emptyCart()
+                <div className="container-fluid text-center d-none d-lg-block" style={{marginTop:'70px'}}>
+                    {this.emptyCart()}
+                </div>
             )
         }
         if(this.props.userId > 0){
             return(
-                <div className="container-fluid text-center d-none d-lg-block">
+                <div className="container-fluid text-center d-none d-lg-block" style={{marginTop:'70px'}}>
                     <div className="row ">
                         {/* <div className="col-10 mx-auto col-lg-2">
                             <p className="text-uppercase">#</p>
@@ -271,16 +316,19 @@ class Cart extends React.Component{
                         <div className="col-10 mx-auto col-lg-2">
                             <p className="text-uppercase">Image of Products</p>
                         </div>
-                        <div className="col-10 mx-auto col-lg-2">
+                        <div className="col-10 mx-auto col-lg-3">
                             <p className="text-uppercase">Name of Product</p>
                         </div>
-                        <div className="col-10 mx-auto col-lg-2">
+                        <div className="col-10 mx-auto col-lg-1">
+                            <p className="text-uppercase">Size</p>
+                        </div>
+                        <div className="col-10 mx-auto col-lg-1">
                             <p className="text-uppercase">Price</p>
                         </div>
                         <div className="col-10 mx-auto col-lg-2">
                             <p className="text-uppercase">quantity</p>
                         </div>
-                        <div className="col-10 mx-auto col-lg-2">
+                        <div className="col-10 mx-auto col-lg-1">
                             <p className="text-uppercase">remove</p>
                         </div>
                         <div className="col-10 mx-auto col-lg-2">

@@ -31,3 +31,21 @@
     transform: rotate(360deg);
   }
 }
+body{
+  /* font-family: 'Amatic SC', cursive !important; */
+  font-family: 'Permanent Marker', cursive !important;
+  /* background: var(--mainWhite) !important;
+  color: var(--mainDark) !important; */
+  font-size: 13px;
+}
+
+.text-title{
+  font-family: 'Permanent Marker', cursive !important;
+  letter-spacing: 0.3 rem;
+  text-transform: uppercase;
+  font-size: 13px;
+}
+
+feComponentTransfer{
+  font-family: 'Permanent Marker', cursive !important;
+}

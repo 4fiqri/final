@@ -1,5 +1,7 @@
 import React from 'react'
-import Carousel from './carousel'
+import Carousel from './carousel/carousel'
+import CarouselA from './carousel/carouselAtasan'
+import CarouselB from './carousel/carouselBawahan'
 import { connect } from 'react-redux'
 import Product from './productList'
 
@@ -45,6 +47,16 @@ class Home extends React.Component{
                         </div>
                         {/* {this.props.id} */}
                     </div>
+                </div>
+                <div className="border mb-3 ml-0" style={{padding:"20px", borderRadius:"20px", backgroundColor : "rgb(249, 249, 249, 0.5)"}} >
+                    <h2>NEW TOPS ARRIVAL</h2>
+                    <h6></h6>
+                    <CarouselA/>
+                </div>
+                <div className="border mb-3 ml-0" style={{padding:"20px", borderRadius:"20px", backgroundColor : "rgb(249, 249, 249, 0.5)"}} >
+                    <h2>NEW BOTTOMS ARRIVAL</h2>
+                    <h6></h6>
+                    <CarouselB/>
                 </div>
                 <Product search={this.state.search}/>
             </div>

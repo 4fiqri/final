@@ -16,6 +16,18 @@
       "username": "4fiqri@gmail.com",
       "role": "user",
       "id": 3
+    },
+    {
+      "username": "emailtugasfiqri@gmail.com",
+      "role": "user",
+      "id": 4
+    },
+    {
+      "username": "adul",
+      "password": "adul",
+      "email": "adul@gmail.com",
+      "phone": "085273853073",
+      "id": 5
     }
   ],
   "products": [
@@ -27,7 +39,11 @@
       "discount": 10,
       "deskripsi": "Kaos Terbalik",
       "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2COktTC7epeb_Qs96UzutI9cLrmtZjXO5FLG09rxmKpSjccEh",
-      "idCategory": 2
+      "idCategory": 2,
+      "S": 20,
+      "M": 20,
+      "L": 20,
+      "XL": 20
     },
     {
       "nama": "Kaos Polo",
@@ -37,7 +53,11 @@
       "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTy2i_CGUYEIGjJf2bKlAmO3cQiIaX5145-8sSM6sgcTmjxoL61",
       "deskripsi": "Kaos PoloTerbalik",
       "idCategory": 2,
-      "id": 2
+      "id": 2,
+      "S": 20,
+      "M": 20,
+      "L": 20,
+      "XL": 20
     },
     {
       "id": 3,
@@ -47,7 +67,11 @@
       "discount": 0,
       "deskripsi": "Kaos Lengan panjang",
       "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQL5PWvcyL-lmvYxEnvKcyv_ZcU3R0TyJfsFRFHOlZE5NNLI6uR",
-      "idCategory": 2
+      "idCategory": 2,
+      "S": 20,
+      "M": 20,
+      "L": 20,
+      "XL": 20
     },
     {
       "id": 4,
@@ -57,16 +81,23 @@
       "discount": 10,
       "deskripsi": "Kaos Bola Terbalik",
       "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8NbgkYvDq3sF9vBSCoJJ586Mdn1FOZICPtnTqSDdx2ZcHBOLkBQ",
-      "idCategory": 2
+      "idCategory": 2,
+      "S": 20,
+      "M": 20,
+      "L": 20,
+      "XL": 20
     },
     {
-      "nama": "Kaos Malu telat Shalat",
+      "nama": "Kaos pengingat",
       "harga": 50000,
-      "discount": "5",
+      "discount": 5,
       "category": "Sablon",
       "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSu8G_1l5RWMcmiDD7TOqmw-G32djy8dOCkCqAL4IQ3Vdn1HPVj",
-      "idCategory": 2,
       "deskripsi": "Kaos pengingat",
+      "S": "25",
+      "M": "25",
+      "L": "25",
+      "XL": "15",
       "id": 5
     },
     {
@@ -77,27 +108,39 @@
       "discount": 20,
       "deskripsi": "Kaos Bad Habit",
       "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkrv4O2ZNzLESEXGTR3en4GjZtet5e-8zpUZCwmy-ak-b3f53FjQ",
-      "idCategory": 2
+      "idCategory": 2,
+      "S": 20,
+      "M": 20,
+      "L": 20,
+      "XL": 20
     },
     {
       "nama": "Kaos Lengan Panjang Gradasi",
       "harga": "25000",
       "category": "lengan panjang",
-      "discount": "10",
+      "discount": 10,
       "deskripsi": "Kaos lengan panjang Gradasi",
       "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQI3VHVP9jjjYiWqlcINRQFjEjI0w8grdzJwl05CewyeKriE7xKg",
       "idCategory": 2,
-      "id": 7
+      "id": 7,
+      "S": 20,
+      "M": 20,
+      "L": 20,
+      "XL": 20
     },
     {
       "nama": "Kaos Full Sablon Eagle",
       "harga": "30000",
       "category": "full sablon",
-      "discount": "10",
+      "discount": 10,
       "deskripsi": "kaos full sablon Eagle",
       "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1yxfgo4nSdf3Pam0XaLaJUverNDAo-zdqpJI7PD_NE-c3l0uJiQ",
       "idCategory": 2,
-      "id": 8
+      "id": 8,
+      "S": 20,
+      "M": 20,
+      "L": 20,
+      "XL": 20
     }
   ],
   "category": [
@@ -118,6 +161,196 @@
       "category": "kemeja"
     }
   ],
-  "cart": [],
-  "history": []
+  "cart": [
+    {
+      "userId": 2,
+      "username": "wahid",
+      "idProduct": 3,
+      "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQL5PWvcyL-lmvYxEnvKcyv_ZcU3R0TyJfsFRFHOlZE5NNLI6uR",
+      "namaProduk": "Kaos Lengan Panjang",
+      "size": "M",
+      "harga": 20000,
+      "discount": 0,
+      "qty": 1,
+      "id": 1
+    }
+  ],
+  "history": [
+    {
+      "idUser": 2,
+      "tanggal": "23052019",
+      "item": [
+        {
+          "username": "wahid",
+          "userId": 2,
+          "discount": 0,
+          "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQL5PWvcyL-lmvYxEnvKcyv_ZcU3R0TyJfsFRFHOlZE5NNLI6uR",
+          "namaProduk": "Kaos Lengan Panjang",
+          "harga": 20000,
+          "size": "M",
+          "qty": 1,
+          "id": 1
+        }
+      ],
+      "totalPrice": 20000,
+      "id": 1
+    },
+    {
+      "idUser": 2,
+      "tanggal": "25052019",
+      "item": [
+        {
+          "userId": 2,
+          "username": "wahid",
+          "idProduct": 4,
+          "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8NbgkYvDq3sF9vBSCoJJ586Mdn1FOZICPtnTqSDdx2ZcHBOLkBQ",
+          "namaProduk": "Kaos Bola",
+          "size": "M",
+          "harga": 20000,
+          "discount": 10,
+          "qty": 1,
+          "id": 1
+        }
+      ],
+      "totalPrice": 18000,
+      "id": 2
+    },
+    {
+      "idUser": 2,
+      "tanggal": "25052019",
+      "item": [
+        {
+          "userId": 2,
+          "username": "wahid",
+          "idProduct": 3,
+          "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQL5PWvcyL-lmvYxEnvKcyv_ZcU3R0TyJfsFRFHOlZE5NNLI6uR",
+          "namaProduk": "Kaos Lengan Panjang",
+          "size": "M",
+          "harga": 20000,
+          "discount": 0,
+          "qty": 1,
+          "id": 1
+        },
+        {
+          "userId": 2,
+          "username": "wahid",
+          "idProduct": 3,
+          "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQL5PWvcyL-lmvYxEnvKcyv_ZcU3R0TyJfsFRFHOlZE5NNLI6uR",
+          "namaProduk": "Kaos Lengan Panjang",
+          "size": "XL",
+          "harga": 20000,
+          "discount": 0,
+          "qty": 1,
+          "id": 2
+        }
+      ],
+      "totalPrice": 40000,
+      "id": 3
+    },
+    {
+      "idUser": 2,
+      "tanggal": "25052019",
+      "item": [
+        {
+          "userId": 2,
+          "username": "wahid",
+          "idProduct": 2,
+          "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTy2i_CGUYEIGjJf2bKlAmO3cQiIaX5145-8sSM6sgcTmjxoL61",
+          "namaProduk": "Kaos Polo",
+          "size": "S",
+          "harga": 20000,
+          "discount": 10,
+          "qty": 1,
+          "id": 1
+        },
+        {
+          "userId": 2,
+          "username": "wahid",
+          "idProduct": 2,
+          "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTy2i_CGUYEIGjJf2bKlAmO3cQiIaX5145-8sSM6sgcTmjxoL61",
+          "namaProduk": "Kaos Polo",
+          "size": "L",
+          "harga": 20000,
+          "discount": 10,
+          "qty": 1,
+          "id": 2
+        }
+      ],
+      "totalPrice": 36000,
+      "id": 4
+    },
+    {
+      "idUser": 2,
+      "tanggal": "25052019",
+      "item": [
+        {
+          "userId": 2,
+          "username": "wahid",
+          "idProduct": 3,
+          "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQL5PWvcyL-lmvYxEnvKcyv_ZcU3R0TyJfsFRFHOlZE5NNLI6uR",
+          "namaProduk": "Kaos Lengan Panjang",
+          "size": "XL",
+          "harga": 20000,
+          "discount": 0,
+          "qty": 1,
+          "id": 1
+        }
+      ],
+      "totalPrice": 20000,
+      "id": 5
+    },
+    {
+      "idUser": 2,
+      "tanggal": "25052019",
+      "item": [
+        {
+          "userId": 2,
+          "username": "wahid",
+          "idProduct": 4,
+          "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8NbgkYvDq3sF9vBSCoJJ586Mdn1FOZICPtnTqSDdx2ZcHBOLkBQ",
+          "namaProduk": "Kaos Bola",
+          "size": "L",
+          "harga": 20000,
+          "discount": 10,
+          "qty": 1,
+          "id": 1
+        }
+      ],
+      "totalPrice": 18000,
+      "id": 6
+    },
+    {
+      "idUser": 2,
+      "tanggal": "25052019",
+      "item": [
+        {
+          "userId": 2,
+          "username": "wahid",
+          "idProduct": 5,
+          "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSu8G_1l5RWMcmiDD7TOqmw-G32djy8dOCkCqAL4IQ3Vdn1HPVj",
+          "namaProduk": "Kaos pengingat",
+          "size": "L",
+          "harga": 50000,
+          "discount": "5",
+          "qty": 1,
+          "id": 1
+        }
+      ],
+      "totalPrice": 47500,
+      "id": 7
+    }
+  ],
+  "wishlist": [
+    {
+      "userId": 2,
+      "username": "wahid",
+      "idProduct": 3,
+      "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQL5PWvcyL-lmvYxEnvKcyv_ZcU3R0TyJfsFRFHOlZE5NNLI6uR",
+      "namaProduk": "Kaos Lengan Panjang",
+      "size": "S",
+      "harga": 20000,
+      "discount": 0,
+      "id": 1
+    }
+  ]
 }

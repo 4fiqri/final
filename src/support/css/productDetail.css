@@ -1,0 +1,15 @@
+/* Style the buttons */
+.TB {
+    border: none;
+    outline: none;
+    /* padding: 10px 16px; */
+    background-color: #786060;
+    cursor: pointer;
+    font-size: 18px;
+  }
+  
+  /* Style the active class, and buttons on mouse-over */
+  .TB:hover {
+    background-color: #666;
+    color: white;
+  }

@@ -81,12 +81,12 @@ export const resetUser = () => {
     }
 }
 
-export const userRegister = (a,b,c,d) => { // userRegister('fikri')
+export const userRegister = (a,b,c,d,e) => { // userRegister('fikri')
     return(dispatch)=>{
         dispatch({
             type : 'LOADING'
         })
-        var newData = {username : a, password : b, email : c, phone : d}
+        var newData = {username : a, password : b, email : c, phone : d, role : e}
         // Mengecek Username availablity
 
         axios.get(urlApi +'/users?username=' + a)

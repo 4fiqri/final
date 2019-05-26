@@ -158,6 +158,11 @@ class CustomPaginationActionsTable extends React.Component {
                 <TableCell>{val.category}</TableCell>
                 <TableCell><img src={val.img} width='50px'/></TableCell>
                 <TableCell>{val.deskripsi}</TableCell>
+                <TableCell>{val.S}</TableCell>
+                <TableCell>{val.M}</TableCell>
+                <TableCell>{val.L}</TableCell>
+                <TableCell>{val.XL}</TableCell>
+
                 <TableCell>
                 <Button onClick={() => this.onBtnEditClick(val)} animated color='teal'>
                 <Button.Content visible>Edit</Button.Content>
@@ -188,6 +193,10 @@ class CustomPaginationActionsTable extends React.Component {
       var category = this.category.inputRef.value
       var img = this.img.inputRef.value
       var deskripsi = this.deskripsi.inputRef.value
+      var deskripsi = this.S.inputRef.value
+      var deskripsi = this.M.inputRef.value
+      var deskripsi = this.L.inputRef.value
+      var deskripsi = this.XL.inputRef.value
       // Properti harus sesuai dengan db.json
       // var newData = {
       //   nama : namaproduk,
@@ -211,6 +220,10 @@ class CustomPaginationActionsTable extends React.Component {
       this.category.inputRef.value = ''
       this.deskripsi.inputRef.value = ''
       this.img.inputRef.value = ''
+      this.S.inputRef.value = ''
+      this.M.inputRef.value = ''
+      this.L.inputRef.value = ''
+      this.XL.inputRef.value = ''
   }
 
   onBtnEditClick = (param) => {
@@ -227,6 +240,10 @@ class CustomPaginationActionsTable extends React.Component {
     var category = this.categoryEdit.inputRef.value === "" ? this.state.editItem.category : this.categoryEdit.inputRef.value
     var img = this.imgEdit.inputRef.value === "" ? this.state.editItem.img : this.imgEdit.inputRef.value
     var deskripsi = this.deskripsiEdit.inputRef.value === "" ? this.state.editItem.deskripsi : this.deskripsiEdit.inputRef.value
+    var S = this.SEdit.inputRef.value === "" ? this.state.editItem.S : this.SEdit.inputRef.value
+    var M = this.MEdit.inputRef.value === "" ? this.state.editItem.M : this.MEdit.inputRef.value
+    var L = this.LEdit.inputRef.value === "" ? this.state.editItem.L : this.LEdit.inputRef.value
+    var XL = this.XLEdit.inputRef.value === "" ? this.state.editItem.XL : this.XLEdit.inputRef.value
     var newData = 
     {
       nama : namaproduk,
@@ -234,7 +251,11 @@ class CustomPaginationActionsTable extends React.Component {
       discount,
       category,
       img,
-      deskripsi
+      deskripsi,
+      S,
+      M,
+      L,
+      XL
     }
     Axios.put(urlApi + '/products/' +this.state.editItem.id , newData)
     .then((res) => {
@@ -251,7 +272,7 @@ class CustomPaginationActionsTable extends React.Component {
     const { classes } = this.props;
     const { rows, rowsPerPage, page } = this.state;
     const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
-    var {nama, harga, discount, deskripsi,img,category} = this.state.editItem
+    var {nama, harga, discount, deskripsi,img,category,S,M,L,XL} = this.state.editItem
     if(this.props.role === 'admin')
     {
     return (
@@ -261,13 +282,20 @@ class CustomPaginationActionsTable extends React.Component {
           <Table className={classes.table}>
           <TableHead>
               <TableRow>
-                  <TableCell style={{fontSize:'24px', fontWeight:'600'}}>ID {this.props.role}</TableCell>
-                  <TableCell style={{fontSize:'24px', fontWeight:'600'}}>NAMA</TableCell>
-                  <TableCell style={{fontSize:'24px', fontWeight:'600'}}>HARGA</TableCell>
-                  <TableCell style={{fontSize:'24px', fontWeight:'600'}}>DISC</TableCell>
-                  <TableCell style={{fontSize:'24px', fontWeight:'600'}}>CAT</TableCell>
-                  <TableCell style={{fontSize:'24px', fontWeight:'600'}}>IMG</TableCell>
-                  <TableCell style={{fontSize:'24px', fontWeight:'600'}}>DESK</TableCell>
+                  <TableCell  style={{fontSize:'19px', fontWeight:'500'}}>NO</TableCell>
+                  <TableCell  style={{fontSize:'19px', fontWeight:'500'}}>NAMA</TableCell>
+                  <TableCell  style={{fontSize:'19px', fontWeight:'500'}}>HARGA</TableCell>
+                  <TableCell  style={{fontSize:'19px', fontWeight:'500'}}>DISC</TableCell>
+                  <TableCell  style={{fontSize:'19px', fontWeight:'500'}}>CAT</TableCell>
+                  <TableCell  style={{fontSize:'19px', fontWeight:'500'}}>IMG</TableCell>
+                  <TableCell  style={{fontSize:'19px', fontWeight:'500'}}>DESK</TableCell>
+                  <TableCell  style={{fontSize:'19px', fontWeight:'500'}}>S</TableCell>
+                  <TableCell  style={{fontSize:'19px', fontWeight:'500'}}>M</TableCell>
+                  <TableCell  style={{fontSize:'19px', fontWeight:'500'}}>L</TableCell>
+                  <TableCell  style={{fontSize:'19px', fontWeight:'500'}}>XL</TableCell>
+                  <TableCell  style={{fontSize:'19px', fontWeight:'500'}}>ACT</TableCell>
+
+
               </TableRow>
           </TableHead>
             <TableBody>
@@ -316,10 +344,14 @@ class CustomPaginationActionsTable extends React.Component {
                             <input />
                             <Label>.00</Label>
                         </Input>
-                        <Input ref={input => this.discount = input} placeholder='Discount' className='mt-2 ml-2 mb-2'/>
+                        <Input ref={input => this.discount = input} placeholder='Discount' className='mt-2 ml-2 mb-2' type='number'/>
                         <Input ref={input => this.category = input} placeholder='Category' className='mt-2 ml-2 mb-2'/>
                         <Input ref={input => this.img = input} placeholder='Image' className='mt-2 ml-2 mb-2'/>
                         <Input ref={input => this.deskripsi = input} placeholder='Deskripsi' className='mt-2 ml-2 mb-2'/>
+                        <Input ref={input => this.S = input} placeholder='S' className='mt-2 ml-2 mb-2' type='number'/>
+                        <Input ref={input => this.M = input} placeholder='M' className='mt-2 ml-2 mb-2' type='number'/>
+                        <Input ref={input => this.L = input} placeholder='L' className='mt-2 ml-2 mb-2' type='number'/>
+                        <Input ref={input => this.XL = input} placeholder='XL' className='mt-2 ml-2 mb-2' type='number'/>
                         <Button animated color='teal' className='mt-2 ml-2 mb-2' onClick={this.onBtnAdd}>
                         <Button.Content visible>Add Product</Button.Content>
                         <Button.Content hidden>
@@ -354,10 +386,14 @@ class CustomPaginationActionsTable extends React.Component {
                               <input />
                               <Label>.00</Label>
                           </Input>
-                          <Input ref={input => this.discountEdit = input} placeholder={discount} className='mt-2 ml-2 mb-2'/>
+                          <Input ref={input => this.discountEdit = input} placeholder={discount} className='mt-2 ml-2 mb-2' type='number'/>
                           <Input ref={input => this.categoryEdit = input} placeholder={category} className='mt-2 ml-2 mb-2'/>
                           <Input ref={input => this.imgEdit = input} placeholder={img} className='mt-2 ml-2 mb-2'/>
                           <Input ref={input => this.deskripsiEdit = input} placeholder={deskripsi} className='mt-2 ml-2 mb-2'/>
+                          <Input ref={input => this.SEdit = input} placeholder={S} className='mt-2 ml-2 mb-2' type='number'/>
+                          <Input ref={input => this.MEdit = input} placeholder={M} className='mt-2 ml-2 mb-2' type='number'/>
+                          <Input ref={input => this.LEdit = input} placeholder={L} className='mt-2 ml-2 mb-2' type='number'/>
+                          <Input ref={input => this.XLEdit = input} placeholder={XL} className='mt-2 ml-2 mb-2' type='number'/>
                           <Button animated color='teal' className='mt-2 ml-2 mb-2' onClick={this.onBtnSave}>
                           <Button.Content visible>Save</Button.Content>
                           <Button.Content hidden>
